@@ -1,0 +1,3 @@
+[Alue|PK id;otsikko:string]1-*[Lanka|PK id;FK alue;otsikko:string;luomisaika:timestamp]
+[Lanka]1-*[Viesti|PK id;FK lanka;FK AP;nimimerkki:string;sisalto:string;luomisaika:timestamp]
+[Viesti]1-*[Viesti]
