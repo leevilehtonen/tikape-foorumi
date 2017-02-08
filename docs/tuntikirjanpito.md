@@ -8,11 +8,11 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 05.02.2017 | 0.5h | Tietokantakaavio.
 ... | ... | ...
 
-### Etunimi Sukunimi
+### Leevi Lehtonen
 Päivä | Tunnit | Kuvaus
 --------------- | ----- | ------
 DD.MM.YYYY | X.Xh | Mitä tein?
-... | ... | ...
+08.02.2017 | 1.0h | Tietokantakaavio päivittelyä, "CREATE TABLE" -kyselyt
 
 ### Etunimi Sukunimi
 Päivä | Tunnit | Kuvaus
