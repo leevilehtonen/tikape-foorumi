@@ -6,6 +6,7 @@ Päivä | Tunnit | Kuvaus
 DD.MM.YYYY | X.Xh | Mitä tein?
 03.02.2017 | 0.0h | Git-ihmettelyä.
 05.02.2017 | 0.5h | Tietokantakaavio.
+11.02.2017 | 0.75h | Käyttötapaukset.
 ... | ... | ...
 
 ### Leevi Lehtonen
