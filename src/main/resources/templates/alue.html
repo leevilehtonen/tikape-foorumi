@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     
-    <title>tikape-foormi</title>
+    <title>Alueen otsikko</title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/main.css" rel="stylesheet"/>
@@ -16,18 +16,16 @@
 <body>
     <div class="container" style="margin-top: 35px">
         <div class="page-header page-heading">
-            <h1 class="pull-left">tikape-foormi</h1>
+            <h1 class="pull-left">Alueen otsikko</h1>
             <div class="clearfix"></div>
         </div>
-        <p class="lead">Tietokantojen perusteet -kurssilla toteutettu ryhmätyö, jonka tavoitteena on tehdä keskustelufoorumi. Foorumin toimivina
-            elementteinä ovat alue-, keskustelu- ja viestielementit.</p>
+        <p class="lead">Tähän alueen kuvaus</p>
         <table class="table forum table-striped table-hover">
             <thead>
                 <tr>
                     <th>
-                        <h3>Alueet</h3>
+                        <h3>Keskustelut</h3>
                     </th>
-                    <th class="cell-stat text-center hidden-xs hidden-sm">Keskustelut</th>
                     <th class="cell-stat text-center hidden-xs hidden-sm">Viestit</th>
                     <th class="cell-stat-2x hidden-xs hidden-sm">Viimeisin</th>
                 </tr>
@@ -35,37 +33,35 @@
             <tbody>
                 <tr>
                     <td>
-                        <h4><a href="#">Alueen nimi</a><br></br><small>Joku kuvaus</small></h4>
+                        <h4><a href="#">Keskustelun nimi</a><br></br><small>Joku kuvaus</small></h4>
                     </td>
-                    <td class="text-center hidden-xs hidden-sm"><a href="#">12</a></td>
                     <td class="text-center hidden-xs hidden-sm"><a href="#">123</a></td>
                     <td class="hidden-xs hidden-sm">by <a href="#">username</a><br></br><small><i class="fa fa-clock-o"></i>Timestamp</small></td>
                 </tr>
                 <tr>
                     <td>
-                        <h4><a href="#">Kurssit</a><br></br><small>Keskutelua yliopiston kursseista</small></h4>
+                        <h4><a href="#">Tietokantojen perusteet</a><br></br><small>Keskustelua tikape kurssin asioista</small></h4>
                     </td>
-                    <td class="text-center hidden-xs hidden-sm"><a href="#">2</a></td>
                     <td class="text-center hidden-xs hidden-sm"><a href="#">8</a></td>
                     <td class="hidden-xs hidden-sm">by <a href="#">lleevi</a><br></br><small><i class="fa fa-clock-o"></i>Eilen 12:00</small></td>
                 </tr>
             </tbody>
         </table>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uusiAlueDialog">Uusi alue</button>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uusiKeskusteluDialog">Uusi keskustelu</button>
     </div>
 
     <!-- Modal -->
-    <div id="uusiAlueDialog" class="modal fade" role="dialog">
+    <div id="uusiKeskusteluDialog" class="modal fade" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Luo uusi alue</h4>
+                    <h4 class="modal-title">Luo uusi keskustelu</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Tähän tehdään formi, jolla lisätään uusi alue</p>
+                    <p>Tähän tehdään formi, jolla lisätään uusi keskustelu ja aloitsuviesti?</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
