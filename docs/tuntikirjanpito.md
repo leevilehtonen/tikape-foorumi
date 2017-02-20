@@ -16,6 +16,7 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 08.02.2017 | 1.0h | Tietokantakaavio päivittelyä, "CREATE TABLE" -kyselyt
 12.02.2017 | 1.0h | Käsitekaavio, raportin luonti
 18.02.2017 | 2.0h | Domain luokat, daot, collectorit ja database luokat tehty
+18.02.2017 | 2.0h | Template pohjat luotu
 
 ### Etunimi Sukunimi
 Päivä | Tunnit | Kuvaus
