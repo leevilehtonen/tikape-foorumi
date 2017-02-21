@@ -1,0 +1,50 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+    <title>Keskustelun otsikko</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/main.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+    <div class="container" style="margin-top: 35px">
+        <div class="page-header page-heading">
+            <h1 class="pull-left">Keskustelun otsikko</h1>
+            <div class="clearfix"></div>
+        </div>
+        <table class="table forum table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <h3>Nimimerkki</h3>
+                    </th>
+                    <th>
+                        <h3>Sisältö</h3>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="viesti: ${viestit}">
+                    <td>
+                        <h4 th:text="${viesti.nimimerkki}">Viestin kirjoittaja<br></br></h4>
+                    </td>
+                    <td>
+                        <p th:text="${viesti.viesti}">Viestin sisältö<br></br></p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

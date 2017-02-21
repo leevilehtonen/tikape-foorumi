@@ -7,6 +7,7 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 03.02.2017 | 0.0h | Git-ihmettelyä.
 05.02.2017 | 0.5h | Tietokantakaavio.
 11.02.2017 | 0.75h | Käyttötapaukset.
+21.02.2017 | 2.5h | Linkkien luuranko + Dao-metodeja.
 ... | ... | ...
 
 ### Leevi Lehtonen

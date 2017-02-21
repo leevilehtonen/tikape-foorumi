@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="utf-8"/>
@@ -33,6 +33,11 @@
                 </tr>
             </thead>
             <tbody>
+                <tr th:each="alue: ${alueet}">
+                    <td>
+                        <h4><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.otsikko}">Alueen nimi</a><br></br><small th:text="${alue.kuvaus}">Joku kuvaus</small></h4>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <h4><a href="#">Alueen nimi</a><br></br><small>Joku kuvaus</small></h4>
