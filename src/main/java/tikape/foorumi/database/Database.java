@@ -73,8 +73,7 @@ public class Database {
         lista.add("CREATE TABLE Alue (id INTEGER PRIMARY KEY, otsikko VARCHAR(300) NOT NULL UNIQUE, kuvaus VARCHAR(600) NOT NULL UNIQUE);");
         lista.add("CREATE TABLE Keskustelu (id INTEGER PRIMARY KEY, alue INTEGER NOT NULL, otsikko VARCHAR(300) NOT NULL, luontiAika TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(alue) REFERENCES Alue(id));");
         lista.add("CREATE TABLE Viesti (id INTEGER PRIMARY KEY, alue INTEGER NOT NULL, keskustelu INTEGER NOT NULL, nimimerkki VARCHAR(100) NOT NULL, viesti VARCHAR(4000) NOT NULL, lahetysAika TIMESTAMP DEFAULT CURRENT_TIMESTAMP, replyTo INTEGER, FOREIGN KEY(alue) REFERENCES Alue(id), FOREIGN KEY(keskustelu) REFERENCES Keskutelu(id), FOREIGN KEY(replyTo) REFERENCES Viesti(id));");
-        
-
+        lista.add("INSERT INTO Alue (otsikko, kuvaus) VALUES('Koulu', 'Testialue koulukeskusteluille');");
 
         return lista;
     }
