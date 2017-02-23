@@ -35,6 +35,9 @@
                     <td>
                         <h4><a th:href="@{~/keskustelu/{id}(id=${keskustelu.id})}" th:text="${keskustelu.otsikko}">Keskustelun nimi</a><br></br><small>kuvaus?</small></h4>
                     </td>
+                    <td>
+                        <h4 th:text="${keskustelu.viestiLkm}">viestien lukumäärä</h4>
+                    </td>
                 </tr>
                 <tr>
                     <td>

@@ -3,11 +3,12 @@ package tikape.foorumi.domain;
 import java.sql.Timestamp;
 
 public class Keskustelu {
-    
+
     private Integer id;
     private Integer alue;
     private String otsikko;
     private Timestamp luontiAika;
+    private int viestiLkm;
 
     public Keskustelu(Integer id, Integer alue, String otsikko, Timestamp luontiAika) {
         this.id = id;
@@ -15,7 +16,7 @@ public class Keskustelu {
         this.otsikko = otsikko;
         this.luontiAika = luontiAika;
     }
-    
+
     public Keskustelu(Integer alue, String otsikko, Timestamp luontiAika) {
         this(null, alue, otsikko, luontiAika);
     }
@@ -50,5 +51,13 @@ public class Keskustelu {
 
     public void setLuontiAika(Timestamp luontiAika) {
         this.luontiAika = luontiAika;
+    }
+
+    public int getViestiLkm() {
+        return this.viestiLkm;
+    }
+
+    public void setViestiLkm(int viestiLkm) {
+        this.viestiLkm = viestiLkm;
     }
 }

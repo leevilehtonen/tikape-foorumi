@@ -37,6 +37,12 @@
                     <td>
                         <h4><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.otsikko}">Alueen nimi</a><br></br><small th:text="${alue.kuvaus}">Joku kuvaus</small></h4>
                     </td>
+                    <td>
+                        <h4 th:text="${alue.keskusteluLkm}">keskustelujen lukumäärä</h4>
+                    </td>
+                    <td>
+                        <h4 th:text="${alue.viestiLkm}">viestien lukumäärä</h4>
+                    </td>
                 </tr>
                 <tr>
                     <td>

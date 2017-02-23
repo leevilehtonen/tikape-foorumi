@@ -6,9 +6,7 @@
 package tikape.foorumi.palvelin;
 
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import tikape.foorumi.database.Database;
 import tikape.foorumi.database.dao.*;
 import tikape.foorumi.domain.Alue;
@@ -33,11 +31,20 @@ public class Domain {
     }
     
     public List<Alue> haeAlueet() throws SQLException{
-        return alueDao.findAll();
+        List<Alue> alueList = alueDao.findAll();
+        for(Alue alue : alueList){
+            alue.setKeskusteluLkm(this.keskusteluDao.countAlueella(alue.getId()));
+            alue.setViestiLkm(this.viestiDao.countAlueella(alue.getId()));
+        }
+        return alueList;
     }
     
     public List<Keskustelu> haeKeskustelutAlueella(int alueId) throws SQLException{
-        return this.keskusteluDao.getAlueella(alueId);
+        List<Keskustelu> keskList = this.keskusteluDao.getAlueella(alueId);
+        for(Keskustelu keskustelu : keskList){
+            keskustelu.setViestiLkm(this.viestiDao.countKeskustelulla(keskustelu.getId()));
+        }
+        return keskList;
     }
     
     public List<Viesti> haeViestitKeskustelulla(int keskusteluId) throws SQLException{
