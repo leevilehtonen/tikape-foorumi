@@ -25,15 +25,29 @@ public class Main {
         get("/alue/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             int alueId = Integer.parseInt(req.params(":id"));
+            map.put("alueId", alueId);
             map.put("keskustelut", domain.haeKeskustelutAlueella(alueId));
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
         
-        get("/keskustelu/:id", (req, res) -> {
+        get("/alue/:alue/keskustelu/:id", (req, res) -> {
             HashMap map = new HashMap<>();
+            int alueId = Integer.parseInt(req.params(":alue"));
             int keskusteluId = Integer.parseInt(req.params(":id"));
             map.put("viestit", domain.haeViestitKeskustelulla(keskusteluId));
+            map.put("alueId", alueId);
+            map.put("keskusteluId", keskusteluId);
             return new ModelAndView(map, "keskustelu");
         }, new ThymeleafTemplateEngine());
+        
+        post("/alue/:alue/keskustelu/:id", (req, res) -> {
+            int keskusteluId = Integer.parseInt(req.params(":id"));
+            int alueId = Integer.parseInt(req.params(":alue"));
+            String nimimerkki = req.queryParams("nimimerkki");
+            String sisalto = req.queryParams("sisalto");
+            domain.lisaaViesti(alueId,keskusteluId,nimimerkki,sisalto);
+            res.redirect("/alue/"+alueId+"/keskustelu/"+keskusteluId);
+            return "";
+        });
     }
 }

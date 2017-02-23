@@ -23,7 +23,6 @@ public class Domain {
     private final KeskusteluDao keskusteluDao;
     private final ViestiDao viestiDao;
     
-    
     public Domain(Database database){
         this.alueDao = new AlueDao(database);
         this.keskusteluDao = new KeskusteluDao(database);
@@ -49,5 +48,13 @@ public class Domain {
     
     public List<Viesti> haeViestitKeskustelulla(int keskusteluId) throws SQLException{
         return this.viestiDao.findKeskusteluId(keskusteluId);
+    }
+    
+    public void lisaaViesti(int alue, int keskustelu, String nimimerkki, String sisalto) throws SQLException{
+        if(nimimerkki.isEmpty() || sisalto.isEmpty()){
+            return;
+        }
+        Viesti viesti = new Viesti(alue,keskustelu,null,nimimerkki,sisalto,null);
+        this.viestiDao.create(viesti);
     }
 }

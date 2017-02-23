@@ -41,6 +41,13 @@
                 </tr>
             </tbody>
         </table>
+        <form method="POST" th:action="@{~/alue/{alue}/keskustelu/{id}(id=${keskusteluId},alue=${alueId})}">
+            <label>Nimimerkki</label>
+            <input type="text" name="nimimerkki"/>
+            <label>Viesti</label>
+            <input type="text" name="sisalto"/>
+            <input type="submit" name="Lähetä"/>
+        </form>
     </div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

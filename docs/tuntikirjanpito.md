@@ -9,6 +9,7 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 11.02.2017 | 0.75h | Käyttötapaukset.
 21.02.2017 | 2.5h | Linkkien luuranko + Dao-metodeja.
 23.02.2017 | 1h | Collector perustoteutus, Daot ja keskustelujen/viestien laskeminen.
+23.02.2017 | 1h | Viestin lisääminen keskusteluun.
 ... | ... | ...
 
 ### Leevi Lehtonen

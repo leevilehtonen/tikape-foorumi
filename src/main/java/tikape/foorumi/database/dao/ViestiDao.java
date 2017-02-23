@@ -17,6 +17,11 @@ public class ViestiDao implements Dao<Viesti, Integer> {
         this.db = database;
         this.collector = new ViestiCollector();
     }
+    
+    public void create(Viesti viesti) throws SQLException{
+        int nextId = this.nextId();
+        this.db.update("INSERT INTO Viesti (id,alue,keskustelu,nimimerkki,viesti) VALUES ("+nextId+", "+viesti.getAlue()+" ,"+viesti.getKeskustelu()+", '"+viesti.getNimimerkki()+"', '"+viesti.getViesti()+"');");
+    }
 
     //Testaamaton
     @Override
@@ -50,5 +55,13 @@ public class ViestiDao implements Dao<Viesti, Integer> {
     @Override
     public void delete(Integer key) throws SQLException {
         this.db.update("DELETE FROM Viesti WHERE id = ?;", key);
+    }
+    
+    private int nextId() throws SQLException{
+        List<Integer> intList = this.db.queryAndCollect("SELECT id FROM Viesti ORDER BY id DESC LIMIT 1;", rs -> rs.getInt("id"));
+        if(intList.isEmpty()){
+            return 0;
+        }
+        return intList.get(0) + 1;
     }
 }
