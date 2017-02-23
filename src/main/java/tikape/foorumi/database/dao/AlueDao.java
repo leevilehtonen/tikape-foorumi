@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import tikape.foorumi.database.Dao;
 import tikape.foorumi.database.Database;
+import tikape.foorumi.database.collector.AlueCollector;
 import tikape.foorumi.domain.Alue;
 
 public class AlueDao implements Dao<Alue, Integer>{
@@ -21,7 +22,8 @@ public class AlueDao implements Dao<Alue, Integer>{
 
     @Override
     public List<Alue> findAll() throws SQLException {
-        return this.db.queryAndCollect("SELECT * FROM Alue;", rs -> new Alue(rs.getInt("id"),rs.getString("otsikko"),rs.getString("kuvaus")));
+        return this.db.queryAndCollect("SELECT * FROM Alue;", new AlueCollector());
+        //return this.db.queryAndCollect("SELECT * FROM Alue;", rs -> new Alue(rs.getInt("id"),rs.getString("otsikko"),rs.getString("kuvaus")));
     }
 
     @Override

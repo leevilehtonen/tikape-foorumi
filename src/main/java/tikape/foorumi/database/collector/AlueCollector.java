@@ -9,6 +9,6 @@ public class AlueCollector implements Collector<Alue>{
 
     @Override
     public Alue collect(ResultSet set) throws SQLException {
-        return null;
-    }   
+        return new Alue(set.getInt("id"),set.getString("otsikko"),set.getString("kuvaus"));
+    }
 }
