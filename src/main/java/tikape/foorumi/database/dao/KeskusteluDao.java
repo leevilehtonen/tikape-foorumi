@@ -21,8 +21,8 @@ public class KeskusteluDao implements Dao<Keskustelu, Integer> {
     public List<Keskustelu> getAlueella(int alueId) throws SQLException {
         return this.db.queryAndCollect("SELECT * FROM Keskustelu WHERE Keskustelu.alue=?;", this.collector, alueId);
     }
-    
-    public int countAlueella(int alueId) throws SQLException{
+
+    public int countAlueella(int alueId) throws SQLException {
         return this.db.queryAndCollect("SELECT COUNT(*) as count FROM Keskustelu WHERE alue = ?;", rs -> rs.getInt("count"), alueId).get(0);
     }
 
@@ -30,7 +30,15 @@ public class KeskusteluDao implements Dao<Keskustelu, Integer> {
     @Override
     public Keskustelu findOne(Integer key) throws SQLException {
         List<Keskustelu> keskList = this.db.queryAndCollect("SELECT * FROM Keskustelu WHERE id = ?;", this.collector, key);
-        if(keskList.isEmpty()){
+        if (keskList.isEmpty()) {
+            return null;
+        }
+        return keskList.get(0);
+    }
+    
+    public Keskustelu findOneWithNimi(String key) throws SQLException {
+        List<Keskustelu> keskList = this.db.queryAndCollect("SELECT * FROM Keskustelu WHERE otsikko = ?;", this.collector, key);
+        if (keskList.isEmpty()) {
             return null;
         }
         return keskList.get(0);
@@ -46,5 +54,9 @@ public class KeskusteluDao implements Dao<Keskustelu, Integer> {
     @Override
     public void delete(Integer key) throws SQLException {
         this.db.update("DELETE FROM Keskustelu WHERE id = ?;", key);
+    }
+
+    public void create(Keskustelu keskustelu) throws SQLException {
+        this.db.update("INSERT INTO Keskustelu(alue, otsikko) VALUES(?,?)", keskustelu.getAlue(), keskustelu.getOtsikko());
     }
 }

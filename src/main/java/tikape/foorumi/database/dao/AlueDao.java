@@ -27,6 +27,8 @@ public class AlueDao implements Dao<Alue, Integer> {
         }
         return alueList.get(0);
     }
+    
+
 
     @Override
     public List<Alue> findAll() throws SQLException {
@@ -37,5 +39,9 @@ public class AlueDao implements Dao<Alue, Integer> {
     @Override
     public void delete(Integer key) throws SQLException {
         this.db.update("DELETE FROM Alue WHERE id = ?;", key);
+    }
+    
+    public void create(Alue alue) throws SQLException {
+        this.db.update("INSERT INTO Alue(otsikko, kuvaus) VALUES(?,?)", alue.getOtsikko(), alue.getKuvaus());
     }
 }

@@ -21,6 +21,10 @@ public class Keskustelu {
         this(null, alue, otsikko, luontiAika);
     }
 
+    public Keskustelu(Integer alue, String otsikko) {
+        this(null, alue, otsikko, null);
+    }
+
     public Integer getId() {
         return id;
     }

@@ -22,6 +22,14 @@ public class Main {
             return new ModelAndView(map, "index");
         }, new ThymeleafTemplateEngine());
         
+        post("/", (req, res) -> {
+            String nimi = req.queryParams("nimi");
+            String kuvaus = req.queryParams("kuvaus");
+            domain.lisaaAlue(nimi,kuvaus);
+            res.redirect("/");
+            return "";
+        });
+        
         get("/alue/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             int alueId = Integer.parseInt(req.params(":id"));
@@ -29,6 +37,20 @@ public class Main {
             map.put("keskustelut", domain.haeKeskustelutAlueella(alueId));
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
+        
+        post("/alue/:alue", (req, res) -> {
+            int alueId = Integer.parseInt(req.params(":alue"));
+ 
+            String nimi = req.queryParams("nimi");
+            String nimimerkki = req.queryParams("nimimerkki");
+            String viesti = req.queryParams("viesti");
+            
+            domain.lisaaKeskustelu(alueId, nimi);
+            int keskusteluId = domain.haeKeskusteluNimellä(nimi).getId();
+            domain.lisaaViesti(alueId,keskusteluId,nimimerkki,viesti);
+            res.redirect("/alue/"+alueId+"/keskustelu/"+keskusteluId);
+            return "";
+        });
         
         get("/alue/:alue/keskustelu/:id", (req, res) -> {
             HashMap map = new HashMap<>();

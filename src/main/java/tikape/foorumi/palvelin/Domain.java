@@ -57,4 +57,18 @@ public class Domain {
         Viesti viesti = new Viesti(alue,keskustelu,null,nimimerkki,sisalto,null);
         this.viestiDao.create(viesti);
     }
+
+    public void lisaaAlue(String nimi, String kuvaus) throws SQLException {
+        Alue alue = new Alue(nimi, kuvaus);
+        this.alueDao.create(alue);
+    }
+
+    public void lisaaKeskustelu(int alueId, String nimi) throws SQLException {
+        Keskustelu keskustelu = new Keskustelu(alueId, nimi);
+        this.keskusteluDao.create(keskustelu);
+    }
+    public Keskustelu haeKeskusteluNimellä(String otsikko) throws SQLException{
+        return this.keskusteluDao.findOneWithNimi(otsikko);
+    }
+
 }

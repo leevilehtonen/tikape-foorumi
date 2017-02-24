@@ -1,78 +1,94 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    
-    <title>Alueen otsikko</title>
-    <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/css/main.css" rel="stylesheet"/>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-</head>
+        <title>Alueen otsikko</title>
+        <!-- Bootstrap -->
+        <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="/css/main.css" rel="stylesheet"/>
 
-<body>
-    <div class="container" style="margin-top: 35px">
-        <div class="page-header page-heading">
-            <h1 class="pull-left">Alueen otsikko</h1>
-            <div class="clearfix"></div>
-        </div>
-        <p class="lead">Tähän alueen kuvaus</p>
-        <table class="table forum table-striped table-hover">
-            <thead>
-                <tr>
-                    <th>
-                        <h3>Keskustelut</h3>
-                    </th>
-                    <th class="cell-stat text-center hidden-xs hidden-sm">Viestit</th>
-                    <th class="cell-stat-2x hidden-xs hidden-sm">Viimeisin</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="keskustelu: ${keskustelut}">
-                    <td>
-                        <h4><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.otsikko}">Keskustelun nimi</a></h4>
-                    </td>
-                    <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.viestiLkm}">viestien lukumäärä</a></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4><a href="#">Keskustelun nimi (template)</a></h4>
-                    </td>
-                    <td class="text-center hidden-xs hidden-sm"><a href="#">123</a></td>
-                    <td class="hidden-xs hidden-sm">by <a href="#">username</a><br></br><small><i class="fa fa-clock-o"></i>Timestamp</small></td>
-                </tr>
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uusiKeskusteluDialog">Uusi keskustelu</button>
-    </div>
+    </head>
 
-    <!-- Modal -->
-    <div id="uusiKeskusteluDialog" class="modal fade" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Luo uusi keskustelu</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Tähän tehdään formi, jolla lisätään uusi keskustelu ja aloitsuviesti?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
-                    <button type="button" class="btn btn-primary">Luo</button>
-                </div>
+    <body>
+        <div class="container" style="margin-top: 35px">
+            <div class="page-header page-heading">
+                <h1 class="pull-left">Alueen otsikko</h1>
+                <div class="clearfix"></div>
             </div>
-
+            <p class="lead">Tähän alueen kuvaus</p>
+            <table class="table forum table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <h3>Keskustelut</h3>
+                        </th>
+                        <th class="cell-stat text-center hidden-xs hidden-sm">Viestit</th>
+                        <th class="cell-stat-2x hidden-xs hidden-sm">Viimeisin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="keskustelu: ${keskustelut}">
+                        <td>
+                            <h4><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.otsikko}">Keskustelun nimi</a></h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.viestiLkm}">viestien lukumäärä</a></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h4><a href="#">Keskustelun nimi (template)</a></h4>
+                        </td>
+                        <td class="text-center hidden-xs hidden-sm"><a href="#">123</a></td>
+                        <td class="hidden-xs hidden-sm">by <a href="#">username</a><br></br><small><i class="fa fa-clock-o"></i>Timestamp</small></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uusiKeskusteluDialog">Uusi keskustelu</button>
         </div>
-    </div>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-</body>
+
+        <!-- Modal -->
+        <div id="uusiKeskusteluDialog" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Luo uusi keskustelu</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" th:action="@{~/alue/{alue}(alue=${alueId})}">
+                            <div class="form-group">
+                                <label for="keskustelunNimi">Keskustelun nimi</label>
+                                <input type="text" class="form-control" id="keskustelunNimi" name="nimi" placeholder="Anna keskustelulle nimi"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="nimimerkki">Nimimerkki</label>
+                                <input type="text" class="form-control" id="nimimerkki" name="nimimerkki" placeholder="Anna nimimerkki"></input>
+                            </div>
+                            <div class="form-group">
+                                <label for="viesti">Viesti</label>
+                                <textarea class="form-control" id="viesti" name="viesti" placeholder="Viesti"></textarea>
+                            </div>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>
+                            <button type="submit" class="btn btn-primary">Luo keskustelu</button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <footer class="footer">
+            <p class="text-muted">tikape-foormi 2017</p>
+        </footer>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+    </body>
 
 </html>
