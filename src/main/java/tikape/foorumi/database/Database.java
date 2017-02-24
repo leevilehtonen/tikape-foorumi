@@ -19,7 +19,6 @@ public class Database {
     public void init() {
         List<String> lauseet = sqliteLauseet();
 
-        // "try with resources" sulkee resurssin automaattisesti lopuksi
         try (Connection conn = getConnection()) {
             Statement st = conn.createStatement();
 
