@@ -37,28 +37,16 @@
                     <td>
                         <h4><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.otsikko}">Alueen nimi</a><br></br><small th:text="${alue.kuvaus}">Joku kuvaus</small></h4>
                     </td>
-                    <td>
-                        <h4 th:text="${alue.keskusteluLkm}">keskustelujen lukumäärä</h4>
-                    </td>
-                    <td>
-                        <h4 th:text="${alue.viestiLkm}">viestien lukumäärä</h4>
-                    </td>
+                    <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.keskusteluLkm}">keskustelujen lukumäärä</a></td>
+                    <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.viestiLkm}">viestien lukumäärä</a></td>
                 </tr>
                 <tr>
                     <td>
-                        <h4><a href="#">Alueen nimi</a><br></br><small>Joku kuvaus</small></h4>
+                        <h4><a href="#">Alueen nimi (template)</a><br></br><small>Joku kuvaus</small></h4>
                     </td>
                     <td class="text-center hidden-xs hidden-sm"><a href="#">12</a></td>
                     <td class="text-center hidden-xs hidden-sm"><a href="#">123</a></td>
                     <td class="hidden-xs hidden-sm">by <a href="#">username</a><br></br><small><i class="fa fa-clock-o"></i>Timestamp</small></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4><a href="#">Kurssit</a><br></br><small>Keskutelua yliopiston kursseista</small></h4>
-                    </td>
-                    <td class="text-center hidden-xs hidden-sm"><a href="#">2</a></td>
-                    <td class="text-center hidden-xs hidden-sm"><a href="#">8</a></td>
-                    <td class="hidden-xs hidden-sm">by <a href="#">lleevi</a><br></br><small><i class="fa fa-clock-o"></i>Eilen 12:00</small></td>
                 </tr>
             </tbody>
         </table>

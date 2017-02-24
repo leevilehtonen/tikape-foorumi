@@ -1,5 +1,7 @@
 package tikape.foorumi.domain;
 
+import java.sql.Timestamp;
+
 public class Alue {
 
     private Integer id;
@@ -7,6 +9,8 @@ public class Alue {
     private String kuvaus;
     private int keskusteluLkm;
     private int viestiLkm;
+    private String viimeisinNimimerkki;
+    private Timestamp viimeisinAika;
 
     public Alue(Integer id, String otsikko, String kuvaus) {
         this.id = id;
@@ -57,4 +61,23 @@ public class Alue {
     public void setViestiLkm(int viestiLkm) {
         this.viestiLkm = viestiLkm;
     }
+
+    public Timestamp getViimeisinAika() {
+        return viimeisinAika;
+    }
+
+    public void setViimeisinAika(Timestamp viimeisinAika) {
+        this.viimeisinAika = viimeisinAika;
+    }
+
+    public String getViimeisinNimimerkki() {
+        return viimeisinNimimerkki;
+    }
+
+    public void setViimeisinNimimerkki(String viimeisinNimimerkki) {
+        this.viimeisinNimimerkki = viimeisinNimimerkki;
+    }
+    
+
+    
 }

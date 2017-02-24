@@ -33,25 +33,16 @@
             <tbody>
                 <tr th:each="keskustelu: ${keskustelut}">
                     <td>
-                        <h4><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.otsikko}">Keskustelun nimi</a><br></br><small>kuvaus?</small></h4>
+                        <h4><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.otsikko}">Keskustelun nimi</a></h4>
                     </td>
-                    <td>
-                        <h4 th:text="${keskustelu.viestiLkm}">viestien lukumäärä</h4>
-                    </td>
+                    <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.viestiLkm}">viestien lukumäärä</a></td>
                 </tr>
                 <tr>
                     <td>
-                        <h4><a href="#">Keskustelun nimi</a><br></br><small>Joku kuvaus</small></h4>
+                        <h4><a href="#">Keskustelun nimi (template)</a></h4>
                     </td>
                     <td class="text-center hidden-xs hidden-sm"><a href="#">123</a></td>
                     <td class="hidden-xs hidden-sm">by <a href="#">username</a><br></br><small><i class="fa fa-clock-o"></i>Timestamp</small></td>
-                </tr>
-                <tr>
-                    <td>
-                        <h4><a href="#">Tietokantojen perusteet</a><br></br><small>Keskustelua tikape kurssin asioista</small></h4>
-                    </td>
-                    <td class="text-center hidden-xs hidden-sm"><a href="#">8</a></td>
-                    <td class="hidden-xs hidden-sm">by <a href="#">lleevi</a><br></br><small><i class="fa fa-clock-o"></i>Eilen 12:00</small></td>
                 </tr>
             </tbody>
         </table>
