@@ -18,43 +18,43 @@ import tikape.foorumi.domain.Viesti;
  * @author jemisalo
  */
 public class Domain {
-    
+
     private final AlueDao alueDao;
     private final KeskusteluDao keskusteluDao;
     private final ViestiDao viestiDao;
-    
-    public Domain(Database database){
+
+    public Domain(Database database) {
         this.alueDao = new AlueDao(database);
         this.keskusteluDao = new KeskusteluDao(database);
         this.viestiDao = new ViestiDao(database);
     }
-    
-    public List<Alue> haeAlueet() throws SQLException{
+
+    public List<Alue> haeAlueet() throws SQLException {
         List<Alue> alueList = alueDao.findAll();
-        for(Alue alue : alueList){
+        for (Alue alue : alueList) {
             alue.setKeskusteluLkm(this.keskusteluDao.countAlueella(alue.getId()));
             alue.setViestiLkm(this.viestiDao.countAlueella(alue.getId()));
         }
         return alueList;
     }
-    
-    public List<Keskustelu> haeKeskustelutAlueella(int alueId) throws SQLException{
+
+    public List<Keskustelu> haeKeskustelutAlueella(int alueId) throws SQLException {
         List<Keskustelu> keskList = this.keskusteluDao.getAlueella(alueId);
-        for(Keskustelu keskustelu : keskList){
+        for (Keskustelu keskustelu : keskList) {
             keskustelu.setViestiLkm(this.viestiDao.countKeskustelulla(keskustelu.getId()));
         }
         return keskList;
     }
-    
-    public List<Viesti> haeViestitKeskustelulla(int keskusteluId) throws SQLException{
+
+    public List<Viesti> haeViestitKeskustelulla(int keskusteluId) throws SQLException {
         return this.viestiDao.findKeskusteluId(keskusteluId);
     }
-    
-    public void lisaaViesti(int alue, int keskustelu, String nimimerkki, String sisalto) throws SQLException{
-        if(nimimerkki.isEmpty() || sisalto.isEmpty()){
+
+    public void lisaaViesti(int alue, int keskustelu, String nimimerkki, String sisalto) throws SQLException {
+        if (nimimerkki.isEmpty() || sisalto.isEmpty()) {
             return;
         }
-        Viesti viesti = new Viesti(alue,keskustelu,null,nimimerkki,sisalto,null);
+        Viesti viesti = new Viesti(alue, keskustelu, null, nimimerkki, sisalto, null);
         this.viestiDao.create(viesti);
     }
 
@@ -67,8 +67,17 @@ public class Domain {
         Keskustelu keskustelu = new Keskustelu(alueId, nimi);
         this.keskusteluDao.create(keskustelu);
     }
-    public Keskustelu haeKeskusteluNimellä(String otsikko) throws SQLException{
+
+    public Keskustelu haeKeskusteluNimellä(String otsikko) throws SQLException {
         return this.keskusteluDao.findOneWithNimi(otsikko);
+    }
+
+    public Alue haeAlue(int alueId) throws SQLException {
+        return this.alueDao.findOne(alueId);
+    }
+
+    public Keskustelu haeKeskustelu(int keskusteluId) throws SQLException {
+        return this.keskusteluDao.findOne(keskusteluId);
     }
 
 }

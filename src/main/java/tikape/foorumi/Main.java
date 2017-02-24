@@ -6,6 +6,8 @@ import spark.Spark;
 import static spark.Spark.*;
 import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import tikape.foorumi.database.Database;
+import tikape.foorumi.domain.Alue;
+import tikape.foorumi.domain.Keskustelu;
 import tikape.foorumi.palvelin.Domain;
 
 public class Main {
@@ -33,8 +35,12 @@ public class Main {
         get("/alue/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             int alueId = Integer.parseInt(req.params(":id"));
+            Alue a = domain.haeAlue(alueId);
             map.put("alueId", alueId);
             map.put("keskustelut", domain.haeKeskustelutAlueella(alueId));
+            map.put("alueOtsikko", a.getOtsikko());
+            map.put("alueKuvaus", a.getKuvaus());
+            
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
         
@@ -56,9 +62,14 @@ public class Main {
             HashMap map = new HashMap<>();
             int alueId = Integer.parseInt(req.params(":alue"));
             int keskusteluId = Integer.parseInt(req.params(":id"));
+            Keskustelu k = domain.haeKeskustelu(keskusteluId);
+            Alue a = domain.haeAlue(alueId);
             map.put("viestit", domain.haeViestitKeskustelulla(keskusteluId));
             map.put("alueId", alueId);
             map.put("keskusteluId", keskusteluId);
+            map.put("keskusteluOtsikko", k.getOtsikko());
+            map.put("alueOtsikko", a.getOtsikko());
+            
             return new ModelAndView(map, "keskustelu");
         }, new ThymeleafTemplateEngine());
         
