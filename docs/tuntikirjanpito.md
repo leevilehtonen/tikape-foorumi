@@ -20,6 +20,8 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 12.02.2017 | 1.0h | Käsitekaavio, raportin luonti
 18.02.2017 | 2.0h | Domain luokat, daot, collectorit ja database luokat tehty
 18.02.2017 | 2.0h | Template pohjat luotu
+24.02.2017 | 2.0h | Template päivitys, formien toteutus
+25.02.2017 | 1.0h | Keskustelu html toteutus
 
 ### Etunimi Sukunimi
 Päivä | Tunnit | Kuvaus
