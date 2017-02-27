@@ -56,4 +56,20 @@ public class ViestiDao implements Dao<Viesti, Integer> {
         this.db.update("DELETE FROM Viesti WHERE id = ?;", key);
     }
     
+    public Viesti alueenViimeisin(int alueId) throws SQLException{
+        List<Viesti> uusin = this.db.queryAndCollect("SELECT * FROM Viesti WHERE alue = ? ORDER BY id DESC LIMIT 1;", this.collector, alueId);
+        if(uusin.isEmpty()){
+            return null;
+        }
+        return uusin.get(0);
+    }
+    
+    public Viesti keskustelunViimeisin(int keskusteluId) throws SQLException{
+        List<Viesti> uusin = this.db.queryAndCollect("SELECT * FROM Viesti WHERE keskustelu = ? ORDER BY id DESC LIMIT 1;", this.collector, keskusteluId);
+        if(uusin.isEmpty()){
+            return null;
+        }
+        return uusin.get(0);
+    }
+    
 }

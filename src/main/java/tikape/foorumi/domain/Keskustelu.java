@@ -9,6 +9,8 @@ public class Keskustelu {
     private String otsikko;
     private Timestamp luontiAika;
     private int viestiLkm;
+    private String viimeisinNimimerkki;
+    private Timestamp viimeisinAika;
 
     public Keskustelu(Integer id, Integer alue, String otsikko, Timestamp luontiAika) {
         this.id = id;
@@ -63,5 +65,21 @@ public class Keskustelu {
 
     public void setViestiLkm(int viestiLkm) {
         this.viestiLkm = viestiLkm;
+    }
+    
+    public Timestamp getViimeisinAika() {
+        return viimeisinAika;
+    }
+
+    public void setViimeisinAika(Timestamp viimeisinAika) {
+        this.viimeisinAika = viimeisinAika;
+    }
+
+    public String getViimeisinNimimerkki() {
+        return viimeisinNimimerkki;
+    }
+
+    public void setViimeisinNimimerkki(String viimeisinNimimerkki) {
+        this.viimeisinNimimerkki = viimeisinNimimerkki;
     }
 }

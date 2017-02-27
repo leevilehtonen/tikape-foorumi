@@ -40,6 +40,7 @@
                     </td>
                     <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.keskusteluLkm}">keskustelujen lukumäärä</a></td>
                     <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{id}(id=${alue.id})}" th:text="${alue.viestiLkm}">viestien lukumäärä</a></td>
+                    <td class="hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${alue.viimeisinKeskusteluId},alue=${alue.id})}" th:text="${alue.viimeisinNimimerkki}">username</a><br></br><small th:text="${alue.viimeisinAika}"><i class="fa fa-clock-o"></i>Timestamp</small></td>
                 </tr>
                 <tr>
                     <td>

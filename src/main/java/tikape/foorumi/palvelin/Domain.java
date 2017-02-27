@@ -34,6 +34,16 @@ public class Domain {
         for (Alue alue : alueList) {
             alue.setKeskusteluLkm(this.keskusteluDao.countAlueella(alue.getId()));
             alue.setViestiLkm(this.viestiDao.countAlueella(alue.getId()));
+            Viesti viimeisin = this.viestiDao.alueenViimeisin(alue.getId());
+            if(viimeisin!=null){
+                alue.setViimeisinNimimerkki(viimeisin.getNimimerkki());
+                alue.setViimeisinAika(viimeisin.getLahetysAika());
+                alue.setViimeisinKeskusteluId(viimeisin.getKeskustelu());
+            }else{
+                alue.setViimeisinNimimerkki("");
+                alue.setViimeisinAika(null);
+                alue.setViimeisinKeskusteluId(-1);
+            }
         }
         return alueList;
     }
@@ -42,6 +52,14 @@ public class Domain {
         List<Keskustelu> keskList = this.keskusteluDao.getAlueella(alueId);
         for (Keskustelu keskustelu : keskList) {
             keskustelu.setViestiLkm(this.viestiDao.countKeskustelulla(keskustelu.getId()));
+            Viesti viimeisin = this.viestiDao.keskustelunViimeisin(keskustelu.getId());
+            if(viimeisin!=null){
+                keskustelu.setViimeisinNimimerkki(viimeisin.getNimimerkki());
+                keskustelu.setViimeisinAika(viimeisin.getLahetysAika());
+            }else{
+                keskustelu.setViimeisinNimimerkki("");
+                keskustelu.setViimeisinAika(null);
+            }
         }
         return keskList;
     }

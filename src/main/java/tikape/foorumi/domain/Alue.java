@@ -11,6 +11,7 @@ public class Alue {
     private int viestiLkm;
     private String viimeisinNimimerkki;
     private Timestamp viimeisinAika;
+    private Integer viimeisinKeskusteluId;
 
     public Alue(Integer id, String otsikko, String kuvaus) {
         this.id = id;
@@ -78,6 +79,12 @@ public class Alue {
         this.viimeisinNimimerkki = viimeisinNimimerkki;
     }
     
-
+    public Integer getViimeisinKeskusteluId(){
+        return this.viimeisinKeskusteluId;
+    }
+    
+    public void setViimeisinKeskusteluId(Integer viimeisinKeskusteluId){
+        this.viimeisinKeskusteluId = viimeisinKeskusteluId;
+    }
     
 }
