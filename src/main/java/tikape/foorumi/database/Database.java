@@ -16,13 +16,14 @@ public class Database {
     public Connection getConnection() throws SQLException {
         if (this.databaseAddress.contains("postgres")) {
             try {
-                URI dbUri = new URI(databaseAddress);
+                URI dbUri = new URI(System.getenv("DATABASE_URL"));
 
                 String username = dbUri.getUserInfo().split(":")[0];
                 String password = dbUri.getUserInfo().split(":")[1];
                 String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath();
 
                 return DriverManager.getConnection(dbUrl, username, password);
+
             } catch (Throwable t) {
                 System.out.println("Error: " + t.getMessage());
                 t.printStackTrace();
