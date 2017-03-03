@@ -16,7 +16,7 @@ public class Database {
     public Connection getConnection() throws SQLException {
         if (this.databaseAddress.contains("postgres")) {
             try {
-                URI dbUri = new URI(System.getenv("DATABASE_URL"));
+                URI dbUri = new URI(databaseAddress);
 
                 String username = dbUri.getUserInfo().split(":")[0];
                 String password = dbUri.getUserInfo().split(":")[1];
@@ -49,6 +49,7 @@ public class Database {
                 System.out.println("Running command >> " + lause);
                 st.executeUpdate(lause);
             }
+            conn.close();
 
         } catch (Throwable t) {
             // jos tietokantataulu on jo olemassa, ei komentoja suoriteta
@@ -59,7 +60,8 @@ public class Database {
     public <T> List<T> queryAndCollect(String query, Collector<T> col, Object... params) throws SQLException {
 
         List<T> rows = new ArrayList<>();
-        PreparedStatement stmt = getConnection().prepareStatement(query);
+        Connection conn = getConnection();
+        PreparedStatement stmt = conn.prepareStatement(query);
         for (int i = 0; i < params.length; i++) {
             stmt.setObject(i + 1, params[i]);
         }
@@ -72,11 +74,13 @@ public class Database {
 
         rs.close();
         stmt.close();
+        conn.close();
         return rows;
     }
 
     public int update(String updateQuery, Object... params) throws SQLException {
-        PreparedStatement stmt = getConnection().prepareStatement(updateQuery);
+        Connection conn = getConnection();
+        PreparedStatement stmt = conn.prepareStatement(updateQuery);
 
         for (int i = 0; i < params.length; i++) {
             stmt.setObject(i + 1, params[i]);
@@ -84,6 +88,7 @@ public class Database {
 
         int changes = stmt.executeUpdate();
         stmt.close();
+        conn.close();
         return changes;
     }
 
