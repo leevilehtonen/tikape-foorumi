@@ -11,7 +11,7 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 23.02.2017 | 1.0h | Collector perustoteutus, Daot ja keskustelujen/viestien laskeminen.
 23.02.2017 | 1.0h | Viestin lisääminen keskusteluun.
 27.02.2017 | 1.0h | Viimeisin viesti.
-03.03.2017 | 2.0h | Sivut, Alueiden järjestys, bugfixejä.
+03.03.2017 | 3.0h | Sivut, Alueiden järjestys, bugfixejä.
 ... | ... | ...
 
 ### Leevi Lehtonen
@@ -24,6 +24,7 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 18.02.2017 | 2.0h | Template pohjat luotu
 24.02.2017 | 2.0h | Template päivitys, formien toteutus
 25.02.2017 | 1.0h | Keskustelu html toteutus
+03.03.2017 | 3.0h | Heroku, Dates, bugfixejä.
 
 ### Etunimi Sukunimi
 Päivä | Tunnit | Kuvaus
