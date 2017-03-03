@@ -16,7 +16,13 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         Spark.staticFileLocation("/public");
-        Database database = new Database("jdbc:sqlite:foorumi.db");
+        
+        String jdbcOsoite = "jdbc:sqlite:foorumi.db";
+        if (System.getenv("DATABASE_URL") != null) {
+            jdbcOsoite = System.getenv("DATABASE_URL");
+        } 
+
+        Database database = new Database(jdbcOsoite);
         database.init();
         Domain domain = new Domain(database);
         
