@@ -9,6 +9,7 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 import tikape.foorumi.database.Database;
 import tikape.foorumi.domain.Alue;
 import tikape.foorumi.domain.Keskustelu;
+import tikape.foorumi.domain.Viesti;
 import tikape.foorumi.palvelin.Domain;
 
 public class Main {
@@ -76,10 +77,13 @@ public class Main {
             String nimimerkki = req.queryParams("nimimerkki");
             String viesti = req.queryParams("viesti");
             
-            domain.lisaaKeskustelu(alueId, nimi);
-            int keskusteluId = domain.haeKeskusteluNimellä(nimi).getId();
-            domain.lisaaViesti(alueId,keskusteluId,nimimerkki,viesti);
-            res.redirect("/alue/"+alueId+"/keskustelu/"+keskusteluId);
+            if(domain.lisaaKeskustelu(alueId, nimi)){
+                int keskusteluId = domain.haeKeskusteluNimellä(nimi).getId();
+                domain.lisaaViesti(alueId,keskusteluId,nimimerkki,viesti);
+                res.redirect("/alue/"+alueId+"/keskustelu/"+keskusteluId);
+            }else{
+                res.redirect("/alue/"+alueId);
+            }
             return "";
         });
         
@@ -89,12 +93,32 @@ public class Main {
             int keskusteluId = Integer.parseInt(req.params(":id"));
             Keskustelu k = domain.haeKeskustelu(keskusteluId);
             Alue a = domain.haeAlue(alueId);
-            map.put("viestit", domain.haeViestitKeskustelulla(keskusteluId));
+            int sivu = 1;
+            try{
+                sivu = Integer.parseInt(req.queryParams("sivu"));
+            }catch(Exception e){
+            }
+            List<Viesti> viestit = domain.haeViestitKeskustelulla(keskusteluId);
+            boolean ohitus = false;
+            if(viestit.size()<=(sivu-1)*10){
+                if(viestit.isEmpty()){
+                    ohitus = true;
+                }else{
+                    sivu = 1;
+                }
+            }
+            if(!ohitus){
+                if(viestit.size()>=sivu*10){
+                    viestit = viestit.subList((sivu-1)*10, sivu*10);
+                }else{
+                    viestit = viestit.subList((sivu-1)*10, viestit.size());
+                }
+            }
+            map.put("viestit", viestit);
             map.put("alueId", alueId);
             map.put("keskusteluId", keskusteluId);
             map.put("keskusteluOtsikko", k.getOtsikko());
             map.put("alueOtsikko", a.getOtsikko());
-            
             return new ModelAndView(map, "keskustelu");
         }, new ThymeleafTemplateEngine());
         

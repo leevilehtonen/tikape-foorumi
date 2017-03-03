@@ -76,14 +76,22 @@ public class Domain {
         this.viestiDao.create(viesti);
     }
 
-    public void lisaaAlue(String nimi, String kuvaus) throws SQLException {
+    public void lisaaAlue(String nimi, String kuvaus){
         Alue alue = new Alue(nimi, kuvaus);
-        this.alueDao.create(alue);
+        try{
+            this.alueDao.create(alue);
+        }catch(SQLException e){
+        }
     }
 
-    public void lisaaKeskustelu(int alueId, String nimi) throws SQLException {
+    public boolean lisaaKeskustelu(int alueId, String nimi){
         Keskustelu keskustelu = new Keskustelu(alueId, nimi);
-        this.keskusteluDao.create(keskustelu);
+        try{
+            this.keskusteluDao.create(keskustelu);
+        }catch(SQLException e){
+            return false;
+        }
+        return true;
     }
 
     public Keskustelu haeKeskusteluNimellä(String otsikko) throws SQLException {
