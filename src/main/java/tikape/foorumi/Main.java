@@ -71,6 +71,7 @@ public class Main {
                 }
             }
             map.put("keskustelut", keskustelut);
+            map.put("seuraavaSivu", sivu+1);
             map.put("alueOtsikko", a.getOtsikko());
             map.put("alueKuvaus", a.getKuvaus());
             return new ModelAndView(map, "alue");
@@ -120,6 +121,7 @@ public class Main {
                 }
             }
             map.put("viestit", viestit);
+            map.put("seuraavaSivu", sivu+1);
             map.put("alueId", alueId);
             map.put("keskusteluId", keskusteluId);
             map.put("keskusteluOtsikko", k.getOtsikko());
