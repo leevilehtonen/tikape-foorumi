@@ -92,7 +92,6 @@ public class Main {
             }
             return "";
         });
-        
         get("/alue/:alue/keskustelu/:id", (req, res) -> {
             HashMap map = new HashMap<>();
             int alueId = Integer.parseInt(req.params(":alue"));

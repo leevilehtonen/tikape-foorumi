@@ -77,6 +77,7 @@ public class Domain {
     }
 
     public void lisaaAlue(String nimi, String kuvaus){
+        nimi = nimi.substring(0, 1).toUpperCase()+nimi.substring(1).toLowerCase();
         Alue alue = new Alue(nimi, kuvaus);
         try{
             this.alueDao.create(alue);

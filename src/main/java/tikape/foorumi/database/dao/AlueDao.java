@@ -32,7 +32,7 @@ public class AlueDao implements Dao<Alue, Integer> {
 
     @Override
     public List<Alue> findAll() throws SQLException {
-        return this.db.queryAndCollect("SELECT * FROM Alue;", this.collector);
+        return this.db.queryAndCollect("SELECT * FROM Alue ORDER BY otsikko;", this.collector);
     }
 
     //Testaamaton
