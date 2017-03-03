@@ -44,8 +44,22 @@ public class Main {
             }catch(Exception e){
             }
             List<Keskustelu> keskustelut = domain.haeKeskustelutAlueella(alueId);
-            keskustelut = keskustelut.subList((sivu-1)*10, sivu*10);
-            map.put("keskustelut", domain.haeKeskustelutAlueella(alueId));
+            boolean ohitus = false;
+            if(keskustelut.size()<=(sivu-1)*10){
+                if(keskustelut.isEmpty()){
+                    ohitus = true;
+                }else{
+                    sivu = 1;
+                }
+            }
+            if(!ohitus){
+                if(keskustelut.size()>=sivu*10){
+                    keskustelut = keskustelut.subList((sivu-1)*10, sivu*10);
+                }else{
+                    keskustelut = keskustelut.subList((sivu-1)*10, keskustelut.size());
+                }
+            }
+            map.put("keskustelut", keskustelut);
             map.put("alueOtsikko", a.getOtsikko());
             map.put("alueKuvaus", a.getKuvaus());
             return new ModelAndView(map, "alue");
