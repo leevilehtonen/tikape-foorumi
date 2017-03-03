@@ -19,7 +19,7 @@ public class ViestiDao implements Dao<Viesti, Integer> {
     }
     
     public void create(Viesti viesti) throws SQLException{
-        this.db.update("INSERT INTO Viesti (alue,keskustelu,nimimerkki,viesti) VALUES ("+viesti.getAlue()+" ,"+viesti.getKeskustelu()+", '"+viesti.getNimimerkki()+"', '"+viesti.getViesti()+"');");
+        this.db.update("INSERT INTO Viesti (alue,keskustelu,nimimerkki,viesti) VALUES (? ,?, ?, ?);",viesti.getAlue(),viesti.getKeskustelu(),viesti.getNimimerkki(),viesti.getViesti());
     }
 
     //Testaamaton
