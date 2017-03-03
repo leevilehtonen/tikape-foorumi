@@ -18,8 +18,8 @@ public class Main {
         Spark.staticFileLocation("/public");
         
         String jdbcOsoite = "jdbc:sqlite:foorumi.db";
-        if (System.getenv("DATABASE_URL") != null) {
-            jdbcOsoite = System.getenv("DATABASE_URL");
+        if (System.getenv("JDBC_DATABASE_URL") != null) {
+            jdbcOsoite = System.getenv("JDBC_DATABASE_URL");
         } 
 
         Database database = new Database(jdbcOsoite);
