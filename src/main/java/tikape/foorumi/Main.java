@@ -18,6 +18,10 @@ public class Main {
         Database database = new Database("jdbc:sqlite:foorumi.db");
         database.init();
         Domain domain = new Domain(database);
+        
+        if (System.getenv("PORT") != null) {
+            port(Integer.valueOf(System.getenv("PORT")));
+        }
 
         get("/", (req, res) -> {
             HashMap map = new HashMap<>();
