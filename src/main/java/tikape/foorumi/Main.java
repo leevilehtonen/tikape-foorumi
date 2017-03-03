@@ -1,6 +1,7 @@
 package tikape.foorumi;
 
 import java.util.HashMap;
+import java.util.List;
 import spark.ModelAndView;
 import spark.Spark;
 import static spark.Spark.*;
@@ -37,10 +38,16 @@ public class Main {
             int alueId = Integer.parseInt(req.params(":id"));
             Alue a = domain.haeAlue(alueId);
             map.put("alueId", alueId);
+            int sivu = 1;
+            try{
+                sivu = Integer.parseInt(req.queryParams("sivu"));
+            }catch(Exception e){
+            }
+            List<Keskustelu> keskustelut = domain.haeKeskustelutAlueella(alueId);
+            keskustelut = keskustelut.subList((sivu-1)*10, sivu*10);
             map.put("keskustelut", domain.haeKeskustelutAlueella(alueId));
             map.put("alueOtsikko", a.getOtsikko());
             map.put("alueKuvaus", a.getKuvaus());
-            
             return new ModelAndView(map, "alue");
         }, new ThymeleafTemplateEngine());
         
