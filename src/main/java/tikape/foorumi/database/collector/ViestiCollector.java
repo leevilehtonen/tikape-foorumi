@@ -14,7 +14,6 @@ public class ViestiCollector implements Collector<Viesti>{
                 set.getInt("id"),
                 set.getInt("alue"),
                 set.getInt("keskustelu"),
-                set.getInt("replyTo"),
                 set.getString("nimimerkki"),
                 set.getString("viesti"),
                 Timestamp.valueOf(set.getString("lahetysAika"))

@@ -7,23 +7,21 @@ public class Viesti {
     private Integer id;
     private Integer alue;
     private Integer keskustelu;
-    private Integer replyTo;
     private String nimimerkki;
     private String viesti;
     private Timestamp lahetysAika;
 
-    public Viesti(Integer id, Integer alue, Integer keskustelu, Integer replyTo, String nimimerkki, String viesti, Timestamp lahetysAika) {
+    public Viesti(Integer id, Integer alue, Integer keskustelu, String nimimerkki, String viesti, Timestamp lahetysAika) {
         this.id = id;
         this.alue = alue;
         this.keskustelu = keskustelu;
-        this.replyTo = replyTo;
         this.nimimerkki = nimimerkki;
         this.viesti = viesti;
         this.lahetysAika = lahetysAika;
     }
 
-    public Viesti(Integer alue, Integer keskustelu, Integer replyTo, String nimimerkki, String viesti, Timestamp lahetysAika) {
-        this(null, alue, keskustelu, replyTo, nimimerkki, viesti, lahetysAika);
+    public Viesti(Integer alue, Integer keskustelu, String nimimerkki, String viesti, Timestamp lahetysAika) {
+        this(null, alue, keskustelu, nimimerkki, viesti, lahetysAika);
     }
 
     public Integer getId() {
@@ -48,14 +46,6 @@ public class Viesti {
 
     public void setKeskustelu(Integer keskustelu) {
         this.keskustelu = keskustelu;
-    }
-
-    public Integer getReplyTo() {
-        return replyTo;
-    }
-
-    public void setReplyTo(Integer replyTo) {
-        this.replyTo = replyTo;
     }
 
     public String getNimimerkki() {

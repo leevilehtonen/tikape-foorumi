@@ -36,7 +36,7 @@
                             <h4><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.otsikko}">Keskustelun nimi</a></h4>
                         </td>
                         <td class="text-center hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.viestiLkm}">viestien lukumäärä</a></td>
-                        <td class="hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.viimeisinNimimerkki}">username</a><br></br><small th:text="${keskustelu.viimeisinAika}"><i class="fa fa-clock-o"></i>Timestamp</small></td>
+                        <td class="hidden-xs hidden-sm"><a th:href="@{~/alue/{alue}/keskustelu/{id}(id=${keskustelu.id},alue=${alueId})}" th:text="${keskustelu.viimeisinNimimerkki}">username</a><br></br><small th:text="${keskustelu.viimeisinAika} ? ${#dates.format(keskustelu.viimeisinAika, 'dd.MM.yyyy HH:mm')} + ' UTC'"><i class="fa fa-clock-o"></i>Timestamp</small></td>
                     </tr>
                 </tbody>
             </table>

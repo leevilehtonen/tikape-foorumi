@@ -72,7 +72,7 @@ public class Domain {
         if (nimimerkki.isEmpty() || sisalto.isEmpty()) {
             return;
         }
-        Viesti viesti = new Viesti(alue, keskustelu, null, nimimerkki, sisalto, null);
+        Viesti viesti = new Viesti(alue, keskustelu, nimimerkki, sisalto, null);
         this.viestiDao.create(viesti);
     }
 

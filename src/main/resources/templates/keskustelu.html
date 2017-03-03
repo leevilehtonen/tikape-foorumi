@@ -28,7 +28,7 @@
                         <span th:text="${viesti.nimimerkki}">nimimerkki</span>
                     </div>
                     <div class="panel-title pull-right">
-                        <span th:text="${viesti.lahetysAika}">lahetysAika</span>
+                        <span th:text="${#dates.format(viesti.lahetysAika, 'dd.MM.yyyy HH:mm')} + ' UTC'">lahetysAika</span>
                     </div>
                     <div class="clearfix"></div>
                 </div>
