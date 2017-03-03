@@ -64,15 +64,15 @@
                         <form method="POST" th:action="@{~/alue/{alue}(alue=${alueId})}">
                             <div class="form-group">
                                 <label for="keskustelunNimi">Keskustelun nimi</label>
-                                <input type="text" class="form-control" id="keskustelunNimi" name="nimi" placeholder="Anna keskustelulle nimi"></input>
+                                <input type="text" class="form-control" id="keskustelunNimi" name="nimi" placeholder="Anna keskustelulle nimi" required="true"></input>
                             </div>
                             <div class="form-group">
                                 <label for="nimimerkki">Nimimerkki</label>
-                                <input type="text" class="form-control" id="nimimerkki" name="nimimerkki" placeholder="Anna nimimerkki"></input>
+                                <input type="text" class="form-control" id="nimimerkki" name="nimimerkki" placeholder="Anna nimimerkki" required="true"></input>
                             </div>
                             <div class="form-group">
                                 <label for="viesti">Viesti</label>
-                                <textarea class="form-control" id="viesti" name="viesti" placeholder="Viesti"></textarea>
+                                <textarea class="form-control" id="viesti" name="viesti" placeholder="Viesti" required="true"></textarea>
                             </div>
 
                             <button type="button" class="btn btn-default" data-dismiss="modal">Sulje</button>

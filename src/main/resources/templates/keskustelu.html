@@ -46,11 +46,11 @@
                     <form method="POST" th:action="@{~/alue/{alue}/keskustelu/{id}(id=${keskusteluId},alue=${alueId})}">
                         <div class="form-group">
                             <label for="nimimerkki">Nimimerkki</label>
-                            <input type="text" class="form-control" id="nimimerkki" name="nimimerkki" placeholder="Anna nimimerkki"></input>
+                            <input type="text" class="form-control" id="nimimerkki" name="nimimerkki" placeholder="Anna nimimerkki" required="true"></input>
                         </div>
                         <div class="form-group">
                             <label for="sisalto">Viesti</label>
-                            <textarea class="form-control" rows="7" id="sisalto" name="sisalto" placeholder="Anna viestisi"></textarea>
+                            <textarea class="form-control" rows="7" id="sisalto" name="sisalto" placeholder="Anna viestisi" required="true"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Lähetä</button>
