@@ -109,6 +109,9 @@ public class Database {
     private List<String> postgreLauseet() {
         ArrayList<String> lista = new ArrayList<>();
 
+        lista.add("DROP TABLE Alue;");
+        lista.add("DROP TABLE Keskustelu;");
+        lista.add("DROP TABLE Viesti;");
         lista.add("CREATE TABLE Alue (id SERIAL PRIMARY KEY, otsikko VARCHAR(300) NOT NULL UNIQUE, kuvaus VARCHAR(600) NOT NULL UNIQUE);");
         lista.add("CREATE TABLE Keskustelu (id SERIAL PRIMARY KEY, alue INTEGER NOT NULL, otsikko VARCHAR(300) NOT NULL, luontiAika TIMESTAMP DEFAULT CURRENT_TIMESTAMP, FOREIGN KEY(alue) REFERENCES Alue(id));");
         lista.add("CREATE TABLE Viesti (id SERIAL PRIMARY KEY, alue INTEGER NOT NULL, keskustelu INTEGER NOT NULL, nimimerkki VARCHAR(100) NOT NULL, viesti VARCHAR(4000) NOT NULL, lahetysAika TIMESTAMP DEFAULT CURRENT_TIMESTAMP, replyTo INTEGER, FOREIGN KEY(alue) REFERENCES Alue(id), FOREIGN KEY(keskustelu) REFERENCES Keskutelu(id), FOREIGN KEY(replyTo) REFERENCES Viesti(id));");
