@@ -11,6 +11,7 @@ DD.MM.YYYY | X.Xh | Mitä tein?
 23.02.2017 | 1.0h | Collector perustoteutus, Daot ja keskustelujen/viestien laskeminen.
 23.02.2017 | 1.0h | Viestin lisääminen keskusteluun.
 27.02.2017 | 1.0h | Viimeisin viesti.
+03.03.2017 | 2.0h | Sivut, Alueiden järjestys, bugfixejä.
 ... | ... | ...
 
 ### Leevi Lehtonen
